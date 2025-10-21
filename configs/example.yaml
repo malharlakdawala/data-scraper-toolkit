@@ -1,0 +1,19 @@
+name: example-scraper
+settings:
+  rate_limit: 1.5
+  max_concurrent: 3
+
+targets:
+  - name: company-pages
+    url: "https://example.com/companies?page={{page}}"
+    pagination:
+      type: page_number
+      start: 1
+      end: 5
+      param: page
+    extraction:
+      method: ai
+      prompt: "Extract company name, description, location, and employee count from each company listing"
+    output:
+      format: csv
+      file: output/companies.csv
